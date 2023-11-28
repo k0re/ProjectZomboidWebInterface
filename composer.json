@@ -1,0 +1,9 @@
+{
+    "require": {
+        "jelix/inifile": "^3.3",
+        "da-mitchell/steam-api": "^2.1",
+        "ext-curl": "*",
+        "ext-mysqli": "*",
+        "ext-json": "*"
+    }
+}
