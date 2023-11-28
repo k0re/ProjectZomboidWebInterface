@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /home/pzserver/
+/home/pzserver/pzserver $1
