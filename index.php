@@ -160,7 +160,7 @@ if (!empty($_GET['sync'])) {
             </div>
             <input type="submit" class="btn btn-primary" value="Add Mod"></input>
         </form>
-        <button type="button" class="btn btn-success" onclick="syncfromSteam()">Sync From Steam</button>
+        <button type="button" class="btn btn-success" onclick="syncfromSteam()" style="margin-top: 10px;">Sync From Steam</button>
     </main>
     <main role="main" class="inner cover">
         <h1 class="cover-heading">Control Server</h1>
