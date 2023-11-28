@@ -95,10 +95,10 @@ if (!empty($_GET['sync'])) {
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th scope="col">Workshop ID</th>
-                                    <th scope="col">Mod Name</th>
-                                    <th scope="col" style="width: 380px">Mod Modules</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col" style="text-align: left;">Workshop ID</th>
+                                    <th scope="col" style="text-align: left;">Mod Name</th>
+                                    <th scope="col" style="width: 380px; text-align: left;">Mod Modules</th>
+                                    <th scope="col" style="text-align: left;">Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -127,9 +127,9 @@ if (!empty($_GET['sync'])) {
                                     else {
                                         $name = "<span style='color: #dc3545; display: block'>".$mod->name."</span>";
                                     }
-                                    echo "<tr><td>".$id."</td><td>".$name."</td><td>";
+                                    echo "<tr><td style='text-align: left;'>".$id."</td><td style=\'text-align: left;\'>".$name."</td><td>";
                                     printTableList($mod->list);
-                                    echo '</td><td>';
+                                    echo "</td><td style='text-align: left;'>";
                                     if ($mod->active == 1) {
                                         echo '<a href="index.php?deactivate_ws=' . $id . '"><span class="fa-solid fa-lock" style="color: #3551dc"></span></a> ';
                                     }
