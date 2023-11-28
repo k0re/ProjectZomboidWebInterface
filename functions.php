@@ -193,7 +193,7 @@ function runServerCommand($cmd)
             break;
     }
 }
-function checkUDP($host="localhost",$port=16261){
+function checkUDP($host="localhost",$port=27115){
     $connection = @fsockopen($host, $port);
 
     if (is_resource($connection))
