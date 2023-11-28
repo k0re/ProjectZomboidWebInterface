@@ -193,3 +193,20 @@ function runServerCommand($cmd)
             break;
     }
 }
+function checkUDP($host="localhost",$port=16261){
+    //look no suppression
+    $fp = fsockopen("udp://".$host, $port, $errno, $errstr,1.0);
+    if (!$fp) {
+        return false;
+    } else {
+        fclose($fp);
+        return true;
+    }
+}
+function renderServerStatus() {
+    if (checkUDP()) {
+        echo '<span class="fa-solid fa-lock-open" style="color: #6ecb35"></span> Online';
+    } else {
+        echo '<span class="fa-solid fa-lock-open" style="color: #dc3545"></span> Offline';
+    }
+}
