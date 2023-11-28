@@ -80,7 +80,7 @@ if (!empty($_GET['sync'])) {
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto" style="padding-bottom: 50px;">
         <div class="inner">
-            <h3 class="masthead-brand" style="margin-left: -154px;">Project Zomboid - <?php renderServerStatus(); ?></h3>
+            <h3 class="masthead-brand" style="margin-left: -154px;margin-top: 10px;">Project Zomboid - <?php renderServerStatus(); ?></h3>
         </div>
     </header>
 
