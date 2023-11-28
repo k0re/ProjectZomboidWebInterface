@@ -127,7 +127,7 @@ if (!empty($_GET['sync'])) {
                                     else {
                                         $name = "<span style='color: #dc3545; display: block'>".$mod->name."</span>";
                                     }
-                                    echo "<tr><td style='text-align: left;'>".$id."</td><td style=\'text-align: left;\'>".$name."</td><td>";
+                                    echo "<tr><td style='text-align: left;'>".$id."</td><td style='text-align: left;'>".$name."</td><td>";
                                     printTableList($mod->list);
                                     echo "</td><td style='text-align: left;'>";
                                     if ($mod->active == 1) {
