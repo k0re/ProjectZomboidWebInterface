@@ -194,13 +194,16 @@ function runServerCommand($cmd)
     }
 }
 function checkUDP($host="localhost",$port=16261){
-    //look no suppression
-    $fp = fsockopen("udp://".$host, $port, $errno, $errstr,1.0);
-    if (!$fp) {
-        return false;
-    } else {
-        fclose($fp);
+    $connection = @fsockopen($host, $port);
+
+    if (is_resource($connection))
+    {
+        fclose($connection);
         return true;
+    }
+    else
+    {
+        return false;
     }
 }
 function renderServerStatus() {
