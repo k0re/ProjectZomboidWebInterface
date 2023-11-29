@@ -220,9 +220,15 @@ function renderServerStatus() {
     }
 }
 function saveMap() {
+    global $rcon_host, $rcon_port, $rcon_pass;
     $ret = shell_exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." save");
 }
 function getCurrentPlayerCount() {
-    $ret = exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." players");
-    return $ret;
+    global $rcon_host, $rcon_port, $rcon_pass;
+    $retval = null;
+    $output = null;
+    exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." players", $output, $retval);
+    $matches = array();
+    preg_match("/\d+/",$output[0], $matches, PREG_OFFSET_CAPTURE);
+    return $matches[0][0];
 }
