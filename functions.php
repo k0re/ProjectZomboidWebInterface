@@ -193,7 +193,7 @@ function runServerCommand($cmd)
             break;
     }
 }
-function checkUDP($host="localhost",$port=27115){
+function checkTCP($host="localhost",$port=27115){
     $connection = @fsockopen($host, $port);
 
     if (is_resource($connection))
@@ -207,7 +207,7 @@ function checkUDP($host="localhost",$port=27115){
     }
 }
 function renderServerStatus() {
-    if (checkUDP()) {
+    if (checkTCP()) {
         echo '<span class="fa-solid fa-lock-open" style="color: #6ecb35"></span> Online';
     } else {
         echo '<span class="fa-solid fa-lock-open" style="color: #dc3545"></span> Offline';
