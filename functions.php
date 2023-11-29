@@ -1,6 +1,6 @@
 <?php
-global $mysql_host, $mysql_user, $mysql_pass, $mysql_db;
 require ('config.inc.php');
+global $mysql_host, $mysql_user, $mysql_pass, $mysql_db, $rcon_host, $rcon_port, $rcon_pass;
 use Jelix\IniFile\IniException;
 use Jelix\IniFile\IniModifier;
 use Jelix\IniFile\IniModifierInterface;
@@ -194,6 +194,9 @@ function runServerCommand($cmd)
         case "updatewebif":
             shell_exec("cd /var/www/pz/ && git pull");
             break;
+        case "save":
+            saveMap();
+            break;
     }
 }
 function checkTCP($host="localhost",$port=27115){
@@ -215,4 +218,11 @@ function renderServerStatus() {
     } else {
         echo '<span class="fa-solid fa-lock-open" style="color: #dc3545"></span> Offline';
     }
+}
+function saveMap() {
+    $ret = shell_exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." save");
+}
+function getCurrentPlayerCount() {
+    $ret = shell_exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." players");
+    return $ret;
 }

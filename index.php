@@ -80,7 +80,7 @@ if (!empty($_GET['sync'])) {
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto" style="padding-bottom: 50px;">
         <div class="inner">
-            <h3 class="masthead-brand" style="margin-left: -154px;margin-top: 10px;">Project Zomboid - <?php renderServerStatus(); ?></h3>
+            <h3 class="masthead-brand" style="margin-left: -154px;margin-top: 10px;">Project Zomboid - <?php renderServerStatus(); ?> - <?php echo getCurrentPlayerCount(); ?> Players Online</h3>
         </div>
     </header>
 
@@ -169,6 +169,7 @@ if (!empty($_GET['sync'])) {
         <button type="button" class="btn btn-primary" onclick="action('update')">Update Server</button>
         <button type="button" class="btn btn-warning" onclick="action('restart')">Restart Server</button>
         <button type="button" class="btn btn-dark" onclick="action('updatewebif')">Update Webinterface</button>
+        <button type="button" class="btn btn-secondary" onclick="action('save')">Save Map</button>
     </main>
     <footer class="mastfoot mt-auto">
         <div class="inner">
