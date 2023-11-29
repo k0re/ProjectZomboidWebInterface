@@ -223,6 +223,6 @@ function saveMap() {
     $ret = shell_exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." save");
 }
 function getCurrentPlayerCount() {
-    $ret = shell_exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." players");
+    $ret = exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." players");
     return $ret;
 }
