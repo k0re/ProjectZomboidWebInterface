@@ -191,6 +191,9 @@ function runServerCommand($cmd)
         case "update":
             shell_exec($updatecommand);
             break;
+        case "updatewebif":
+            shell_exec("cd /var/www/pz/ && git pull");
+            break;
     }
 }
 function checkTCP($host="localhost",$port=27115){

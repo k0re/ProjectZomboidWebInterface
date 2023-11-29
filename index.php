@@ -168,6 +168,7 @@ if (!empty($_GET['sync'])) {
         <button type="button" class="btn btn-danger" onclick="action('stop')">Stop Server</button>
         <button type="button" class="btn btn-primary" onclick="action('update')">Update Server</button>
         <button type="button" class="btn btn-warning" onclick="action('restart')">Restart Server</button>
+        <button type="button" class="btn btn-dark" onclick="action('updatewebif')">Update Webinterfacea</button>
     </main>
     <footer class="mastfoot mt-auto">
         <div class="inner">
