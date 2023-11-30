@@ -1,8 +1,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 require ("functions.php");
-print_r($_POST);
-print_r($_GET);
 if (!empty($_POST['wsid'])) {
     insert_wsitem(addslashes($_POST['wsid']));
 }
