@@ -163,6 +163,7 @@ if (!empty($_POST['action'])) {
     </footer>
 </div>
 <div id="modaloverlay" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modaloverlay" style="padding-right: 17px; display: none;background-color: rgb(51, 51, 51);opacity: 0.8;">
+    <span class="fas fa-sync fa-spin" style="font-size: 80px;margin-top: 300px;"></span>
 </div>
 
 <!-- Bootstrap core JavaScript
