@@ -80,9 +80,9 @@ if (!empty($_POST['action'])) {
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th scope="col" style="text-align: left;">Workshop ID</th>
+                                    <th scope="col" style="text-align: left; width: 120px;">Workshop ID</th>
                                     <th scope="col" style="text-align: left;">Mod Name</th>
-                                    <th scope="col" style="width: 380px; text-align: left;">Mod Modules</th>
+                                    <th scope="col" style="text-align: left; width: 380px; ">Mod Modules</th>
                                     <th scope="col" style="text-align: left;">Actions</th>
                                 </tr>
                                 </thead>
