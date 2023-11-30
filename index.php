@@ -189,7 +189,7 @@ if (!empty($_POST['action'])) {
         $(document).ajaxStart(function () {
             $("#modaloverlay").fadeIn();
         });
-    }
+    });
 </script>
 </body>
 
