@@ -180,22 +180,22 @@ function runServerCommand($cmd)
     $updatecommand = 'sudo -H -u pzserver /home/pzserver/webserver update';
     switch($cmd) {
         case "start":
-            shell_exec($startcommand);
+            echo shell_exec($startcommand);
             break;
         case "stop":
-            shell_exec($stopcommand);
+            echo shell_exec($stopcommand);
             break;
         case "restart":
-            shell_exec($restartcommand);
+            echo shell_exec($restartcommand);
             break;
         case "update":
-            shell_exec($updatecommand);
+            echo shell_exec($updatecommand);
             break;
         case "updatewebif":
-            shell_exec("cd /var/www/pz/ && git pull");
+            echo shell_exec("cd /var/www/pz/ && git pull");
             break;
         case "save":
-            saveMap();
+            echo saveMap();
             break;
     }
 }
@@ -221,7 +221,7 @@ function renderServerStatus() {
 }
 function saveMap() {
     global $rcon_host, $rcon_port, $rcon_pass;
-    $ret = shell_exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." save");
+    echo shell_exec("rcon -a ".$rcon_host.":".$rcon_port." -p ".$rcon_pass." save");
 }
 function getCurrentPlayerCount() {
     global $rcon_host, $rcon_port, $rcon_pass;
