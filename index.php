@@ -180,19 +180,14 @@ if (!empty($_POST['action'])) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script>
     function ajaxCall(action, data) {
-        $.ajax({
-            url : "index.php",
-            type : "post",
-            dataType: "text",
-            data : {
-                action: action,
-                data: data
-            },
-            success : function (a){
-                $("#modaloverlay").fadeIn();
-            }
-        }).done(function(raw) {
-            window.location.href = "index.php";
+        $.post("index.php", {action: action, data: data})
+            .done(function (data) {
+                window.location.reload();
+            });
+    }
+    $(document).ready(function() {
+        $(document).ajaxStart(function () {
+            $("#modaloverlay").fadeIn();
         });
     }
 </script>
