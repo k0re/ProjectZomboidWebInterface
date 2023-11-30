@@ -8,8 +8,6 @@ if (!empty($_POST['wsid'])) {
 }
 if (!empty($_POST['action'])) {
     $data = !empty($_POST['data']) ? addslashes($_POST['data']) : "";
-    echo "\n\n\n\n\n\n\n\n\n".$_POST['action'];
-    echo "\n\n\n\n\n\n\n\n\n".$data;
     switch ($_POST['action']) {
         case "delete":
             delete_wsitem($data);
@@ -35,7 +33,7 @@ if (!empty($_POST['action'])) {
         case "restart":
         case "updatewebif":
         case "save":
-        runServerCommand($data);
+            runServerCommand($_POST['action']);
             break;
     }
 }
