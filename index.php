@@ -5,52 +5,38 @@ require ("functions.php");
 if (!empty($_POST['wsid'])) {
     insert_wsitem(addslashes($_POST['wsid']));
 }
-
-if (!empty($_GET['delete'])) {
-    try {
-        delete_wsitem(addslashes($_GET['delete']));
-    } catch (\Jelix\IniFile\IniException $e) {
-    }
-}
-if (!empty($_GET['deactivate_ws'])) {
-    try {
-        deactivate_item(addslashes($_GET['deactivate_ws']));
-    } catch (\Jelix\IniFile\IniException $e) {
-    }
-}
-
-if (!empty($_GET['activate_ws'])) {
-    try {
-        activate_item(addslashes($_GET['activate_ws']));
-    } catch (\Jelix\IniFile\IniException $e) {
-    }
-}
-
-if (!empty($_GET['deactivate_mod'])) {
-    try {
-        deactivate_module(addslashes($_GET['deactivate_mod']));
-    } catch (\Jelix\IniFile\IniException $e) {
-    }
-}
-
-if (!empty($_GET['activate_mod'])) {
-    try {
-        activate_module(addslashes($_GET['activate_mod']));
-    } catch (\Jelix\IniFile\IniException $e) {
+if (!empty($_POST['action'])) {
+    $data = !empty($_POST['data']) ? addslashes($_POST['data']) : "";
+    switch ($_POST['action']) {
+        case "delete":
+            delete_wsitem($data);
+            break;
+        case "deactivate_ws":
+            deactivate_item($data);
+            break;
+        case "activate_ws":
+            activate_item($data);
+            break;
+        case "deactivate_mod":
+            deactivate_module($data);
+            break;
+        case "activate_mod":
+            activate_module($data);
+            break;
+        case "sync":
+            sync_from_steam();
+            break;
+        case "start":
+        case "stop":
+        case "update":
+        case "restart":
+        case "updatewebif":
+        case "save":
+        runServerCommand($data);
+            break;
     }
 }
 
-if (!empty($_GET['action'])) {
-    runServerCommand(addslashes($_GET['action']));
-}
-
-if (!empty($_GET['sync'])) {
-    try {
-        sync_from_steam();
-    } catch (Exception $e) {
-
-    }
-}
 
 ?>
 
@@ -109,11 +95,11 @@ if (!empty($_GET['sync'])) {
                                             $module = (object) $module;
                                             if ($module->active) {
                                                 echo "<span style='color: #198754; display: block'>".$module->name;
-                                                echo ' <a href="index.php?deactivate_mod=' . $id . '"><span class="fa-solid fa-lock" style="color: #3551dc"></span></a> ';
+                                                echo ' <a href="#" onclick="ajaxCall(\'deactivate_mod\',\''.$id.'\')"><span class="fa-solid fa-lock" style="color: #3551dc"></span></a> ';
                                             }
                                             else {
                                                 echo "<span style='color: #dc3545; display: block'>".$module->name;
-                                                echo ' <a href="index.php?activate_mod=' . $id . '"><span class="fa-solid fa-lock-open" style="color: #6ecb35"></span></a> ';
+                                                echo ' <a href="#" onclick="ajaxCall(\'activate_mod\',\''.$id.'\')"><span class="fa-solid fa-lock-open" style="color: #6ecb35"></span></a> ';
                                             }
                                             echo "</span>";
                                         }
@@ -131,12 +117,12 @@ if (!empty($_GET['sync'])) {
                                     printTableList($mod->list);
                                     echo "</td><td style='text-align: left;'>";
                                     if ($mod->active == 1) {
-                                        echo '<a href="index.php?deactivate_ws=' . $id . '"><span class="fa-solid fa-lock" style="color: #3551dc"></span></a> ';
+                                        echo '<a href="#" onclick="ajaxCall(\'deactivate_ws\',\''.$id.'\')"><span class="fa-solid fa-lock" style="color: #3551dc"></span></a> ';
                                     }
                                     else {
-                                        echo '<a href="index.php?activate_ws=' . $id . '"><span class="fa-solid fa-lock-open" style="color: #6ecb35"></span></a> ';
+                                        echo '<a href="#" onclick="ajaxCall(\'activate_ws\',\''.$id.'\')"><span class="fa-solid fa-lock-open" style="color: #6ecb35"></span></a> ';
                                     }
-                                    echo '<a href="index.php?delete='.$id.'"><span class="fa-solid fa-trash" style="color: #dc3545"></span></a> ';
+                                    echo '<a href="#" onclick="ajaxCall(\'delete\',\''.$id.'\')"><span class="fa-solid fa-trash" style="color: #dc3545"></span></a> ';
                                     echo '</td>';
                                     echo "</tr>";
                                 }
@@ -160,16 +146,16 @@ if (!empty($_GET['sync'])) {
             </div>
             <input type="submit" class="btn btn-primary" value="Add Mod"></input>
         </form>
-        <button type="button" class="btn btn-success" onclick="syncfromSteam()" style="margin-top: 10px;">Sync From Steam</button>
+        <button type="button" class="btn btn-success" onclick='ajaxCall('sync','')" style="margin-top: 10px;">Sync From Steam</button>
     </main>
     <main role="main" class="inner cover">
         <h1 class="cover-heading">Control Server</h1>
-        <button type="button" class="btn btn-success" onclick="action('start')">Start Server</button>
-        <button type="button" class="btn btn-danger" onclick="action('stop')">Stop Server</button>
-        <button type="button" class="btn btn-primary" onclick="action('update')">Update Server</button>
-        <button type="button" class="btn btn-warning" onclick="action('restart')">Restart Server</button>
-        <button type="button" class="btn btn-dark" onclick="action('updatewebif')">Update Webinterface</button>
-        <button type="button" class="btn btn-secondary" onclick="action('save')">Save Map</button>
+        <button type="button" class="btn btn-success" onclick="ajaxCall('start','')">Start Server</button>
+        <button type="button" class="btn btn-danger" onclick="ajaxCall('stop','')">Stop Server</button>
+        <button type="button" class="btn btn-primary" onclick="ajaxCall('update','')">Update Server</button>
+        <button type="button" class="btn btn-warning" onclick="ajaxCall('restart','')">Restart Server</button>
+        <button type="button" class="btn btn-dark" onclick="ajaxCall('updatewebif','')">Update Webinterface</button>
+        <button type="button" class="btn btn-secondary" onclick="ajaxCall('save','')">Save Map</button>
     </main>
     <footer class="mastfoot mt-auto">
         <div class="inner">
@@ -189,11 +175,21 @@ if (!empty($_GET['sync'])) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script>
-    function action(name) {
-        window.location.href = "index.php?action=" + name;
-    }
-    function syncfromSteam() {
-        window.location.href = "index.php?sync=true";
+    function ajaxCall(action, data) {
+        $.ajax({
+            url : "index.php",
+            type : "post",
+            dataType: "text",
+            data : {
+                action: action,
+                data: data
+            },
+            success : function (a){
+                alert("show modal");
+            }
+        }).done(function(raw) {
+            window.location.href = "index.php";
+        });
     }
 </script>
 </body>
