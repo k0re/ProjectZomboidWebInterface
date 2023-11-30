@@ -163,7 +163,7 @@ if (!empty($_POST['action'])) {
         </div>
     </footer>
 </div>
-<div id="modaloverlay" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modaloverlay" style="padding-right: 17px; display: block;background-color: rgb(51, 51, 51);opacity: 0.8;">
+<div id="modaloverlay" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modaloverlay" style="padding-right: 17px; display: none;background-color: rgb(51, 51, 51);opacity: 0.8;">
 </div>
 
 <!-- Bootstrap core JavaScript
