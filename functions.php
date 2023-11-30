@@ -174,10 +174,10 @@ function sync_to_file() {
 
 function runServerCommand($cmd)
 {
-    $restartcommand = 'sudo -H -u pzserver /home/pzserver/webserver restart';
-    $startcommand = 'sudo -H -u pzserver /home/pzserver/webserver start';
-    $stopcommand = 'sudo -H -u pzserver /home/pzserver/webserver stop';
-    $updatecommand = 'sudo -H -u pzserver /home/pzserver/webserver update';
+    $restartcommand = 'sudo -H -u pzserver /home/pzserver/pzserver restart';
+    $startcommand = 'sudo -H -u pzserver /home/pzserver/pzserver start';
+    $stopcommand = 'sudo -H -u pzserver /home/pzserver/pzserver stop';
+    $updatecommand = 'sudo -H -u pzserver /home/pzserver/pzserver update';
     switch($cmd) {
         case "start":
             echo shell_exec($startcommand);
