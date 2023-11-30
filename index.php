@@ -163,7 +163,7 @@ if (!empty($_POST['action'])) {
         </div>
     </footer>
 </div>
-<div id="modaloverlay" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modaloverlay" style="padding-right: 17px; display: block;">
+<div id="modaloverlay" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modaloverlay" style="padding-right: 17px; display: block;background-color: rgb(51, 51, 51);opacity: 0.8;">
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -177,7 +177,7 @@ if (!empty($_POST['action'])) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script>
     function ajaxCall(action, data) {
-        jQuery.ajax({
+        $.ajax({
             url : "index.php",
             type : "post",
             dataType: "text",
@@ -186,7 +186,7 @@ if (!empty($_POST['action'])) {
                 data: data
             },
             success : function (a){
-                alert("show modal");
+                $("#modaloverlay").fadeIn();
             }
         }).done(function(raw) {
             window.location.href = "index.php";
