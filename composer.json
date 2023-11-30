@@ -4,6 +4,9 @@
         "da-mitchell/steam-api": "^2.1",
         "ext-curl": "*",
         "ext-mysqli": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "components/jquery": "3.7.1",
+        "twbs/bootstrap": "5.3.2",
+        "fortawesome/font-awesome": "6.5.0"
     }
 }
