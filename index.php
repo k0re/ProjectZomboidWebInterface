@@ -7,6 +7,8 @@ if (!empty($_POST['wsid'])) {
 }
 if (!empty($_POST['action'])) {
     $data = !empty($_POST['data']) ? addslashes($_POST['data']) : "";
+    echo "\n\n\n\n\n\n\n\n\n".$_POST['action'];
+    echo "\n\n\n\n\n\n\n\n\n".$data;
     switch ($_POST['action']) {
         case "delete":
             delete_wsitem($data);
