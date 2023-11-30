@@ -152,6 +152,8 @@ if (!empty($_POST['action'])) {
         <button type="button" class="btn btn-danger" onclick="ajaxCall('stop','')">Stop Server</button>
         <button type="button" class="btn btn-primary" onclick="ajaxCall('update','')">Update Server</button>
         <button type="button" class="btn btn-warning" onclick="ajaxCall('restart','')">Restart Server</button>
+        <br>
+        <br>
         <button type="button" class="btn btn-dark" onclick="ajaxCall('updatewebif','')">Update Webinterface</button>
         <button type="button" class="btn btn-secondary" onclick="ajaxCall('save','')">Save Map</button>
     </main>
